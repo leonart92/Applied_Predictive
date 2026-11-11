@@ -1,0 +1,13 @@
+# Données et artefacts lourds : sur le Drive, jamais sur GitHub
+data/
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+*.npy
+
+# Environnement local
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
