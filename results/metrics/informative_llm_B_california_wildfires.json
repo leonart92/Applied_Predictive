@@ -1,0 +1,66 @@
+{
+  "task": "informative",
+  "n_samples": 179,
+  "labels": [
+    "informative",
+    "not_informative"
+  ],
+  "f1_macro": 0.43252606464686083,
+  "f1_weighted": 0.5139606376862084,
+  "accuracy": 0.4581005586592179,
+  "per_class": {
+    "informative": {
+      "precision": 0.8955223880597015,
+      "recall": 0.4,
+      "f1-score": 0.5529953917050692,
+      "support": 150
+    },
+    "not_informative": {
+      "precision": 0.19642857142857142,
+      "recall": 0.7586206896551724,
+      "f1-score": 0.3120567375886525,
+      "support": 29
+    }
+  },
+  "confusion_matrix": [
+    [
+      60,
+      90
+    ],
+    [
+      7,
+      22
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.3590552215761637,
+        "upper": 0.49908847807420936
+      },
+      "f1_weighted": {
+        "lower": 0.4336157705237397,
+        "upper": 0.5839643481860799
+      },
+      "accuracy": {
+        "lower": 0.37988826815642457,
+        "upper": 0.5307262569832403
+      }
+    }
+  },
+  "model": "llm",
+  "protocol": "B",
+  "fold": "california_wildfires",
+  "subset": "test",
+  "prediction_file": "results/predictions/informative_llm_B_california_wildfires.csv"
+}

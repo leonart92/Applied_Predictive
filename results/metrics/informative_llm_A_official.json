@@ -1,0 +1,66 @@
+{
+  "task": "informative",
+  "n_samples": 1534,
+  "labels": [
+    "informative",
+    "not_informative"
+  ],
+  "f1_macro": 0.6473901593901594,
+  "f1_weighted": 0.6545626641584921,
+  "accuracy": 0.6486310299869622,
+  "per_class": {
+    "informative": {
+      "precision": 0.9126050420168067,
+      "recall": 0.5271844660194175,
+      "f1-score": 0.6683076923076923,
+      "support": 1030
+    },
+    "not_informative": {
+      "precision": 0.48136315228966986,
+      "recall": 0.8968253968253969,
+      "f1-score": 0.6264726264726265,
+      "support": 504
+    }
+  },
+  "confusion_matrix": [
+    [
+      543,
+      487
+    ],
+    [
+      52,
+      452
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.623405000830569,
+        "upper": 0.6748155204331382
+      },
+      "f1_weighted": {
+        "lower": 0.6289341560554538,
+        "upper": 0.6806428039640686
+      },
+      "accuracy": {
+        "lower": 0.6238591916558018,
+        "upper": 0.6753585397653195
+      }
+    }
+  },
+  "model": "llm",
+  "protocol": "A",
+  "fold": "official",
+  "subset": "test",
+  "prediction_file": "results/predictions/informative_llm_A_official.csv"
+}

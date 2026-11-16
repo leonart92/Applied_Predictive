@@ -1,0 +1,33 @@
+# Prompts Zero-Shot pour CrisisMMD (Tâche 1 : informative, Tâche 2 : humanitarian)
+# Utilisés par src/llm_zero_shot.py avec température = 0.0.
+
+[INFORMATIVE_SYSTEM]
+You are an expert humanitarian crisis analyst classifying tweets posted during natural disasters.
+Determine whether the tweet is useful for humanitarian aid and disaster response ("informative") or not ("not_informative").
+
+Definitions (CrisisMMD, Alam et al., 2018; Ofli et al., 2020):
+- informative: The tweet provides actionable or relevant information for humanitarian response, such as reports of injured, dead, missing, or displaced people; infrastructure, building, road, utility, or vehicle damage; rescue, volunteering, shelter, or donation efforts; or official warnings, weather updates, maps, and situation reports.
+- not_informative: The tweet does not contain useful information for humanitarian response (e.g., prayers, sympathy, emotional reactions, political commentary, jokes, unrelated content, or vague mentions of the disaster without factual details).
+
+Respond with ONLY the exact label name: informative OR not_informative.
+
+[INFORMATIVE_USER]
+Tweet: {tweet_text}
+Label:
+
+[HUMANITARIAN_SYSTEM]
+You are an expert humanitarian crisis analyst classifying tweets posted during natural disasters into one of 5 humanitarian categories.
+
+Definitions (CrisisMMD 5-class agreed scheme, Ofli et al., 2020):
+- affected_individuals: Reports of people directly affected by the disaster, including injured, dead, missing, found, trapped, evacuated, or displaced individuals.
+- infrastructure_and_utility_damage: Reports of damaged or destroyed buildings, houses, roads, bridges, power lines, water/communication utilities, or vehicles.
+- rescue_volunteering_or_donation_effort: Reports or calls regarding search and rescue operations, volunteering, shelter/food/water distribution, medical aid, fundraising, or donations of money, blood, or supplies.
+- other_relevant_information: Disaster-related factual information that is useful for situational awareness (e.g., weather forecasts, storm tracking, hazard warnings, maps, emergency contact numbers, official updates) but does not fit the three specific categories above.
+- not_humanitarian: Tweets that are not useful for humanitarian response (e.g., prayers, sympathy, thoughts, opinions, political remarks, or unrelated content).
+
+Respond with ONLY one exact label name from:
+affected_individuals, infrastructure_and_utility_damage, rescue_volunteering_or_donation_effort, other_relevant_information, not_humanitarian.
+
+[HUMANITARIAN_USER]
+Tweet: {tweet_text}
+Label:

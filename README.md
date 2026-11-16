@@ -43,7 +43,7 @@ The official host was unreachable in November 2026. The same archive is availabl
 | Fine-tuned BERTweet (`vinai/bertweet-base`) | text | available: `src/bertweet.py` |
 | Fine-tuned Vision Transformer | image | planned |
 | CLIP embeddings fusion + logistic regression | text + image | planned |
-| Zero-shot LLM | text | planned |
+| Zero-shot LLM (`llama3.2:latest`) | text | available: `src/llm_zero_shot.py` |
 
 ## Evaluation
 
@@ -60,7 +60,9 @@ Protocol A (in-domain test split, seed 42):
 |---|---|---|---|---|
 | 1 · Informative (1,534 tweets) | TF-IDF + logistic regression | 0.786 | 0.817 | 0.825 |
 | 1 · Informative (1,534 tweets) | Fine-tuned BERTweet | 0.860 | 0.876 | 0.876 |
+| 1 · Informative (1,534 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.647 | 0.655 | 0.649 |
 | 2 · Humanitarian (955 tweets) | TF-IDF + logistic regression | 0.634 | 0.744 | 0.740 |
+| 2 · Humanitarian (955 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.554 | 0.659 | 0.686 |
 
 For reference, the text-only model of Ofli et al. (2020) reaches weighted F1 scores of 80.9 on Task 1 and 67.7 on Task 2 on the same splits. Detailed Protocol A, Protocol B (14 unseen-disaster folds) and error-analysis reports for the TF-IDF baseline are available in `reports/`.
 
@@ -97,6 +99,15 @@ Task 1 takes about four minutes on an Apple Silicon GPU. The script picks CUDA, 
 
 To reproduce the TF-IDF baseline and error analysis, run `notebooks/02_baseline_tfidf.ipynb` (Protocol A), `notebooks/02b_tfidf_protocol_b.ipynb` (Protocol B) and `notebooks/07_error_analysis_tfidf.ipynb` using the `.venv` kernel.
 
+Run the zero-shot LLM classifier (`llama3.2:latest` via Ollama at temperature 0, seed 42) and cross-model error analysis:
+
+```bash
+python -m src.llm_zero_shot informative --export-protocol-b
+python -m src.llm_zero_shot humanitarian --export-protocol-b
+python -m src.error_analysis informative
+python -m src.error_analysis humanitarian
+```
+
 Each run writes `results/predictions/{task}_{model}_{protocol}_{fold}.csv` with one row per test example:
 
 ```
@@ -118,7 +129,10 @@ python -m src.evaluate results/predictions/informative_tfidf_A_official.csv
 │   ├── prepare_data.py      # TSV + image validation and split generation
 │   ├── data.py              # shared split loader for protocols A and B
 │   ├── evaluate.py          # shared evaluation metrics and bootstrap CI
-│   └── bertweet.py          # BERTweet fine-tuning and test predictions
+│   ├── bertweet.py          # BERTweet fine-tuning and test predictions
+│   ├── llm_prompt.txt       # fixed zero-shot prompts for tasks 1 and 2
+│   ├── llm_zero_shot.py     # zero-shot LLM inference and Protocol A/B export
+│   └── error_analysis.py    # cross-model error analysis and comparison tables
 ├── notebooks/
 │   ├── 02_baseline_tfidf.ipynb
 │   ├── 02b_tfidf_protocol_b.ipynb
