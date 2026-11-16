@@ -39,7 +39,7 @@ The official host was unreachable in November 2026. The same archive is availabl
 
 | Model | Input | Status |
 |---|---|---|
-| TF-IDF + logistic regression | text | planned |
+| TF-IDF + logistic regression | text | available: `notebooks/02_baseline_tfidf.ipynb`, `notebooks/02b_tfidf_protocol_b.ipynb` |
 | Fine-tuned BERTweet (`vinai/bertweet-base`) | text | available: `src/bertweet.py` |
 | Fine-tuned Vision Transformer | image | planned |
 | CLIP embeddings fusion + logistic regression | text + image | planned |
@@ -54,13 +54,15 @@ The main metric is macro F1, because the classes are imbalanced. Weighted F1, ac
 
 ## Results so far
 
-Fine-tuned BERTweet on task 1, protocol A, single run (seed 42), raw official files:
+Protocol A (in-domain test split, seed 42):
 
-| Split | Macro F1 | Weighted F1 | Accuracy |
-|---|---|---|---|
-| Test (1,534 tweets) | 0.860 | 0.876 | 0.876 |
+| Task | Model | Macro F1 | Weighted F1 | Accuracy |
+|---|---|---|---|---|
+| 1 · Informative (1,534 tweets) | TF-IDF + logistic regression | 0.786 | 0.817 | 0.825 |
+| 1 · Informative (1,534 tweets) | Fine-tuned BERTweet | 0.860 | 0.876 | 0.876 |
+| 2 · Humanitarian (955 tweets) | TF-IDF + logistic regression | 0.634 | 0.744 | 0.740 |
 
-For reference, the text-only model of Ofli et al. (2020) reaches an F1 of 80.9 on the same split.
+For reference, the text-only model of Ofli et al. (2020) reaches weighted F1 scores of 80.9 on Task 1 and 67.7 on Task 2 on the same splits. Detailed Protocol A, Protocol B (14 unseen-disaster folds) and error-analysis reports for the TF-IDF baseline are available in `reports/`.
 
 ## Getting started
 
@@ -72,6 +74,18 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+The six cleaned CSV splits are already versioned in `splits/`. To regenerate them from the raw official TSVs and images (`data/CrisisMMD_v2.0/data_image/`):
+
+```bash
+python src/prepare_data.py
+```
+
+Run the unit test suite:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 Train BERTweet and write the test predictions:
 
 ```bash
@@ -81,21 +95,42 @@ python src/bertweet.py humanitarian   # task 2
 
 Task 1 takes about four minutes on an Apple Silicon GPU. The script picks CUDA, then Apple MPS, then the CPU.
 
+To reproduce the TF-IDF baseline and error analysis, run `notebooks/02_baseline_tfidf.ipynb` (Protocol A), `notebooks/02b_tfidf_protocol_b.ipynb` (Protocol B) and `notebooks/07_error_analysis_tfidf.ipynb` using the `.venv` kernel.
+
 Each run writes `results/predictions/{task}_{model}_{protocol}_{fold}.csv` with one row per test example:
 
 ```
 tweet_id, image_id, event_name, y_true, y_pred, proba_<class 1>, ..., proba_<class N>
 ```
 
+Evaluate any prediction file and compute 95% bootstrap confidence intervals (1,000 resamples, seed 42):
+
+```bash
+python -m src.evaluate results/predictions/informative_tfidf_A_official.csv
+```
+
 ## Repository layout
 
 ```
 .
+├── splits/                  # cleaned official agreed-label CSV splits
 ├── src/
+│   ├── prepare_data.py      # TSV + image validation and split generation
+│   ├── data.py              # shared split loader for protocols A and B
+│   ├── evaluate.py          # shared evaluation metrics and bootstrap CI
 │   └── bertweet.py          # BERTweet fine-tuning and test predictions
+├── notebooks/
+│   ├── 02_baseline_tfidf.ipynb
+│   ├── 02b_tfidf_protocol_b.ipynb
+│   └── 07_error_analysis_tfidf.ipynb
 ├── results/
-│   └── predictions/         # one CSV per task, model and protocol
-├── data/                    # not versioned
+│   ├── predictions/         # one CSV per task, model and protocol
+│   ├── metrics/             # JSON metrics and bootstrap CIs from src/evaluate.py
+│   └── tables/              # summary tables and validation checks
+├── figures/                 # confusion matrices and generalization gap plots
+├── reports/                 # data preparation and TF-IDF experiment reports
+├── tests/                   # unit tests for data prep, splits and evaluation
+├── data/                    # raw TSVs and images (not versioned)
 └── requirements.txt         # pinned versions
 ```
 

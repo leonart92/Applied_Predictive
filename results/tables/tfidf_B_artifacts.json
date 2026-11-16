@@ -1,0 +1,338 @@
+[
+  {
+    "task": "informative",
+    "event_name": "hurricane_harvey",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_harvey",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/informative_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_harvey",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_irma",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_irma",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/informative_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_irma",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_maria",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_maria",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/informative_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "hurricane_maria",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "mexico_earthquake",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "mexico_earthquake",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/informative_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "mexico_earthquake",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/informative_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "california_wildfires",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "california_wildfires",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/informative_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "california_wildfires",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "srilanka_floods",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/informative_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/in_domain/informative_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/in_domain/informative_tfidf_B_srilanka_floods_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "srilanka_floods",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/informative_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/informative_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/out_of_domain/informative_tfidf_B_srilanka_floods_confusion_matrix.png"
+  },
+  {
+    "task": "informative",
+    "event_name": "srilanka_floods",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/informative_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/all_target/informative_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/all_target/informative_tfidf_B_srilanka_floods_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_harvey",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_harvey",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_harvey",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_hurricane_harvey.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_hurricane_harvey.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_hurricane_harvey_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_irma",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_irma",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_irma",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_hurricane_irma.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_hurricane_irma.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_hurricane_irma_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_maria",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_maria",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "hurricane_maria",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_hurricane_maria.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_hurricane_maria.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_hurricane_maria_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "mexico_earthquake",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "mexico_earthquake",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "mexico_earthquake",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_mexico_earthquake.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_mexico_earthquake.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_mexico_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "iraq_iran_earthquake",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_iraq_iran_earthquake.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_iraq_iran_earthquake.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_iraq_iran_earthquake_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "california_wildfires",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "california_wildfires",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "california_wildfires",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_california_wildfires.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_california_wildfires.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_california_wildfires_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "srilanka_floods",
+    "regime": "in_domain",
+    "predictions": "results/predictions/in_domain/humanitarian_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/in_domain/humanitarian_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/in_domain/humanitarian_tfidf_B_srilanka_floods_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "srilanka_floods",
+    "regime": "out_of_domain",
+    "predictions": "results/predictions/humanitarian_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/humanitarian_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/out_of_domain/humanitarian_tfidf_B_srilanka_floods_confusion_matrix.png"
+  },
+  {
+    "task": "humanitarian",
+    "event_name": "srilanka_floods",
+    "regime": "all_target",
+    "predictions": "results/predictions/all_target/humanitarian_tfidf_B_srilanka_floods.csv",
+    "metrics": "results/metrics/all_target/humanitarian_tfidf_B_srilanka_floods.json",
+    "figure": "figures/tfidf_B/all_target/humanitarian_tfidf_B_srilanka_floods_confusion_matrix.png"
+  }
+]

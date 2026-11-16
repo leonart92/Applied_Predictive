@@ -1,0 +1,66 @@
+{
+  "task": "informative",
+  "n_samples": 2782,
+  "labels": [
+    "informative",
+    "not_informative"
+  ],
+  "f1_macro": 0.6481555497140661,
+  "f1_weighted": 0.7464773001947435,
+  "accuracy": 0.784687275341481,
+  "per_class": {
+    "informative": {
+      "precision": 0.7832,
+      "recall": 0.971712158808933,
+      "f1-score": 0.8673311184939092,
+      "support": 2015
+    },
+    "not_informative": {
+      "precision": 0.7978723404255319,
+      "recall": 0.29335071707953064,
+      "f1-score": 0.42897998093422307,
+      "support": 767
+    }
+  },
+  "confusion_matrix": [
+    [
+      1958,
+      57
+    ],
+    [
+      542,
+      225
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.6259827061364871,
+        "upper": 0.6699989033622582
+      },
+      "f1_weighted": {
+        "lower": 0.7264724234968817,
+        "upper": 0.7670406403383909
+      },
+      "accuracy": {
+        "lower": 0.7688713156002875,
+        "upper": 0.8012311286843997
+      }
+    }
+  },
+  "model": "tfidf",
+  "protocol": "B",
+  "fold": "hurricane_irma",
+  "subset": "all_target",
+  "prediction_file": "results/predictions/all_target/informative_tfidf_B_hurricane_irma.csv"
+}

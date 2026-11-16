@@ -1,0 +1,866 @@
+{
+  "informative": [
+    {
+      "C": 0.01,
+      "task": "informative",
+      "n_samples": 1573,
+      "labels": [
+        "informative",
+        "not_informative"
+      ],
+      "f1_macro": 0.7301400374518767,
+      "f1_weighted": 0.7678215047104401,
+      "accuracy": 0.7749523204068659,
+      "per_class": {
+        "informative": {
+          "precision": 0.8031088082901554,
+          "recall": 0.8806818181818182,
+          "f1-score": 0.8401084010840109,
+          "support": 1056
+        },
+        "not_informative": {
+          "precision": 0.6963855421686747,
+          "recall": 0.5589941972920697,
+          "f1-score": 0.6201716738197425,
+          "support": 517
+        }
+      },
+      "confusion_matrix": [
+        [
+          930,
+          126
+        ],
+        [
+          228,
+          289
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.705447396332134,
+            "upper": 0.7551475188358017
+          },
+          "f1_weighted": {
+            "lower": 0.7464063444699557,
+            "upper": 0.7899139582235446
+          },
+          "accuracy": {
+            "lower": 0.7552447552447552,
+            "upper": 0.7965670692943421
+          }
+        }
+      }
+    },
+    {
+      "C": 0.1,
+      "task": "informative",
+      "n_samples": 1573,
+      "labels": [
+        "informative",
+        "not_informative"
+      ],
+      "f1_macro": 0.7487599963906112,
+      "f1_weighted": 0.7834583899645546,
+      "accuracy": 0.789574062301335,
+      "per_class": {
+        "informative": {
+          "precision": 0.8149435273675065,
+          "recall": 0.8882575757575758,
+          "f1-score": 0.8500226551880381,
+          "support": 1056
+        },
+        "not_informative": {
+          "precision": 0.7203791469194313,
+          "recall": 0.5880077369439072,
+          "f1-score": 0.6474973375931843,
+          "support": 517
+        }
+      },
+      "confusion_matrix": [
+        [
+          938,
+          118
+        ],
+        [
+          213,
+          304
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.7255025371952033,
+            "upper": 0.7720881923259736
+          },
+          "f1_weighted": {
+            "lower": 0.763137210674125,
+            "upper": 0.8055058468542349
+          },
+          "accuracy": {
+            "lower": 0.7698664971392244,
+            "upper": 0.810553083280356
+          }
+        }
+      }
+    },
+    {
+      "C": 1.0,
+      "task": "informative",
+      "n_samples": 1573,
+      "labels": [
+        "informative",
+        "not_informative"
+      ],
+      "f1_macro": 0.7706126770410915,
+      "f1_weighted": 0.8049413859477984,
+      "accuracy": 0.8143674507310871,
+      "per_class": {
+        "informative": {
+          "precision": 0.8172757475083057,
+          "recall": 0.9318181818181818,
+          "f1-score": 0.8707964601769912,
+          "support": 1056
+        },
+        "not_informative": {
+          "precision": 0.8048780487804879,
+          "recall": 0.574468085106383,
+          "f1-score": 0.6704288939051919,
+          "support": 517
+        }
+      },
+      "confusion_matrix": [
+        [
+          984,
+          72
+        ],
+        [
+          220,
+          297
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.7478004136246398,
+            "upper": 0.7947382778875698
+          },
+          "f1_weighted": {
+            "lower": 0.7834522471281383,
+            "upper": 0.8270838525296585
+          },
+          "accuracy": {
+            "lower": 0.7952956134774316,
+            "upper": 0.8340750158931977
+          }
+        }
+      }
+    },
+    {
+      "C": 10.0,
+      "task": "informative",
+      "n_samples": 1573,
+      "labels": [
+        "informative",
+        "not_informative"
+      ],
+      "f1_macro": 0.7628773799198778,
+      "f1_weighted": 0.8007397921534956,
+      "accuracy": 0.8143674507310871,
+      "per_class": {
+        "informative": {
+          "precision": 0.8056,
+          "recall": 0.9535984848484849,
+          "f1-score": 0.8733738074588031,
+          "support": 1056
+        },
+        "not_informative": {
+          "precision": 0.848297213622291,
+          "recall": 0.5299806576402321,
+          "f1-score": 0.6523809523809524,
+          "support": 517
+        }
+      },
+      "confusion_matrix": [
+        [
+          1007,
+          49
+        ],
+        [
+          243,
+          274
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.7382950210903587,
+            "upper": 0.7865243119724313
+          },
+          "f1_weighted": {
+            "lower": 0.7790866919577761,
+            "upper": 0.8226171522051222
+          },
+          "accuracy": {
+            "lower": 0.7946598855689765,
+            "upper": 0.8340750158931977
+          }
+        }
+      }
+    },
+    {
+      "C": 100.0,
+      "task": "informative",
+      "n_samples": 1573,
+      "labels": [
+        "informative",
+        "not_informative"
+      ],
+      "f1_macro": 0.7629607266193315,
+      "f1_weighted": 0.8014810970271175,
+      "accuracy": 0.8162746344564527,
+      "per_class": {
+        "informative": {
+          "precision": 0.8036421219319082,
+          "recall": 0.9611742424242424,
+          "f1-score": 0.8753773178094006,
+          "support": 1056
+        },
+        "not_informative": {
+          "precision": 0.867741935483871,
+          "recall": 0.5203094777562862,
+          "f1-score": 0.6505441354292624,
+          "support": 517
+        }
+      },
+      "confusion_matrix": [
+        [
+          1015,
+          41
+        ],
+        [
+          248,
+          269
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.7373276668724124,
+            "upper": 0.7875669087852067
+          },
+          "f1_weighted": {
+            "lower": 0.7793812811904511,
+            "upper": 0.8237598310927011
+          },
+          "accuracy": {
+            "lower": 0.7971869040050859,
+            "upper": 0.8353464717101081
+          }
+        }
+      }
+    }
+  ],
+  "humanitarian": [
+    {
+      "C": 0.01,
+      "task": "humanitarian",
+      "n_samples": 998,
+      "labels": [
+        "affected_individuals",
+        "infrastructure_and_utility_damage",
+        "rescue_volunteering_or_donation_effort",
+        "other_relevant_information",
+        "not_humanitarian"
+      ],
+      "f1_macro": 0.5080638605404533,
+      "f1_weighted": 0.6371215977583762,
+      "accuracy": 0.6172344689378757,
+      "per_class": {
+        "affected_individuals": {
+          "precision": 0.08695652173913043,
+          "recall": 0.4444444444444444,
+          "f1-score": 0.14545454545454545,
+          "support": 9
+        },
+        "infrastructure_and_utility_damage": {
+          "precision": 0.35947712418300654,
+          "recall": 0.6875,
+          "f1-score": 0.4721030042918455,
+          "support": 80
+        },
+        "rescue_volunteering_or_donation_effort": {
+          "precision": 0.5024154589371981,
+          "recall": 0.697986577181208,
+          "f1-score": 0.5842696629213483,
+          "support": 149
+        },
+        "other_relevant_information": {
+          "precision": 0.6126760563380281,
+          "recall": 0.7280334728033473,
+          "f1-score": 0.6653919694072657,
+          "support": 239
+        },
+        "not_humanitarian": {
+          "precision": 0.9058441558441559,
+          "recall": 0.5355086372360844,
+          "f1-score": 0.6731001206272618,
+          "support": 521
+        }
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          2,
+          0,
+          3
+        ],
+        [
+          3,
+          55,
+          6,
+          12,
+          4
+        ],
+        [
+          5,
+          12,
+          104,
+          16,
+          12
+        ],
+        [
+          9,
+          27,
+          19,
+          174,
+          10
+        ],
+        [
+          25,
+          59,
+          76,
+          82,
+          279
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.47087864113421024,
+            "upper": 0.547075797015127
+          },
+          "f1_weighted": {
+            "lower": 0.6079099466414705,
+            "upper": 0.6678153997006832
+          },
+          "accuracy": {
+            "lower": 0.5891783567134269,
+            "upper": 0.6492985971943888
+          }
+        }
+      }
+    },
+    {
+      "C": 0.1,
+      "task": "humanitarian",
+      "n_samples": 998,
+      "labels": [
+        "affected_individuals",
+        "infrastructure_and_utility_damage",
+        "rescue_volunteering_or_donation_effort",
+        "other_relevant_information",
+        "not_humanitarian"
+      ],
+      "f1_macro": 0.5088355626933027,
+      "f1_weighted": 0.6521802763478506,
+      "accuracy": 0.6342685370741483,
+      "per_class": {
+        "affected_individuals": {
+          "precision": 0.06451612903225806,
+          "recall": 0.2222222222222222,
+          "f1-score": 0.1,
+          "support": 9
+        },
+        "infrastructure_and_utility_damage": {
+          "precision": 0.37254901960784315,
+          "recall": 0.7125,
+          "f1-score": 0.4892703862660944,
+          "support": 80
+        },
+        "rescue_volunteering_or_donation_effort": {
+          "precision": 0.5023923444976076,
+          "recall": 0.7046979865771812,
+          "f1-score": 0.5865921787709497,
+          "support": 149
+        },
+        "other_relevant_information": {
+          "precision": 0.6268115942028986,
+          "recall": 0.7238493723849372,
+          "f1-score": 0.6718446601941748,
+          "support": 239
+        },
+        "not_humanitarian": {
+          "precision": 0.8996960486322189,
+          "recall": 0.5681381957773513,
+          "f1-score": 0.6964705882352941,
+          "support": 521
+        }
+      },
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          3,
+          0,
+          3
+        ],
+        [
+          2,
+          57,
+          5,
+          12,
+          4
+        ],
+        [
+          4,
+          11,
+          105,
+          15,
+          14
+        ],
+        [
+          8,
+          26,
+          20,
+          173,
+          12
+        ],
+        [
+          15,
+          58,
+          76,
+          76,
+          296
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.4720386012549082,
+            "upper": 0.5504178751916631
+          },
+          "f1_weighted": {
+            "lower": 0.6233972892565208,
+            "upper": 0.6828618041370041
+          },
+          "accuracy": {
+            "lower": 0.6042084168336673,
+            "upper": 0.6663326653306614
+          }
+        }
+      }
+    },
+    {
+      "C": 1.0,
+      "task": "humanitarian",
+      "n_samples": 998,
+      "labels": [
+        "affected_individuals",
+        "infrastructure_and_utility_damage",
+        "rescue_volunteering_or_donation_effort",
+        "other_relevant_information",
+        "not_humanitarian"
+      ],
+      "f1_macro": 0.5553163591498689,
+      "f1_weighted": 0.6911087808026682,
+      "accuracy": 0.6803607214428857,
+      "per_class": {
+        "affected_individuals": {
+          "precision": 0.125,
+          "recall": 0.2222222222222222,
+          "f1-score": 0.16,
+          "support": 9
+        },
+        "infrastructure_and_utility_damage": {
+          "precision": 0.4573643410852713,
+          "recall": 0.7375,
+          "f1-score": 0.5645933014354066,
+          "support": 80
+        },
+        "rescue_volunteering_or_donation_effort": {
+          "precision": 0.5583756345177665,
+          "recall": 0.738255033557047,
+          "f1-score": 0.6358381502890174,
+          "support": 149
+        },
+        "other_relevant_information": {
+          "precision": 0.6175438596491228,
+          "recall": 0.7364016736401674,
+          "f1-score": 0.6717557251908397,
+          "support": 239
+        },
+        "not_humanitarian": {
+          "precision": 0.894878706199461,
+          "recall": 0.6372360844529751,
+          "f1-score": 0.7443946188340808,
+          "support": 521
+        }
+      },
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          5,
+          0,
+          1
+        ],
+        [
+          2,
+          59,
+          5,
+          10,
+          4
+        ],
+        [
+          1,
+          10,
+          110,
+          16,
+          12
+        ],
+        [
+          5,
+          20,
+          16,
+          176,
+          22
+        ],
+        [
+          6,
+          39,
+          61,
+          83,
+          332
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.5083010367530814,
+            "upper": 0.6060059819425693
+          },
+          "f1_weighted": {
+            "lower": 0.6612292817505198,
+            "upper": 0.722147562096585
+          },
+          "accuracy": {
+            "lower": 0.6492985971943888,
+            "upper": 0.7124248496993988
+          }
+        }
+      }
+    },
+    {
+      "C": 10.0,
+      "task": "humanitarian",
+      "n_samples": 998,
+      "labels": [
+        "affected_individuals",
+        "infrastructure_and_utility_damage",
+        "rescue_volunteering_or_donation_effort",
+        "other_relevant_information",
+        "not_humanitarian"
+      ],
+      "f1_macro": 0.6066843241732907,
+      "f1_weighted": 0.7387313819558455,
+      "accuracy": 0.7324649298597194,
+      "per_class": {
+        "affected_individuals": {
+          "precision": 0.2,
+          "recall": 0.2222222222222222,
+          "f1-score": 0.21052631578947367,
+          "support": 9
+        },
+        "infrastructure_and_utility_damage": {
+          "precision": 0.5686274509803921,
+          "recall": 0.725,
+          "f1-score": 0.6373626373626373,
+          "support": 80
+        },
+        "rescue_volunteering_or_donation_effort": {
+          "precision": 0.6494252873563219,
+          "recall": 0.7583892617449665,
+          "f1-score": 0.6996904024767802,
+          "support": 149
+        },
+        "other_relevant_information": {
+          "precision": 0.6245733788395904,
+          "recall": 0.7656903765690377,
+          "f1-score": 0.6879699248120301,
+          "support": 239
+        },
+        "not_humanitarian": {
+          "precision": 0.8949880668257757,
+          "recall": 0.7197696737044146,
+          "f1-score": 0.7978723404255319,
+          "support": 521
+        }
+      },
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          5,
+          0,
+          1
+        ],
+        [
+          1,
+          58,
+          5,
+          10,
+          6
+        ],
+        [
+          1,
+          8,
+          113,
+          15,
+          12
+        ],
+        [
+          2,
+          16,
+          13,
+          183,
+          25
+        ],
+        [
+          4,
+          19,
+          38,
+          85,
+          375
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.5491641147030157,
+            "upper": 0.661356399002156
+          },
+          "f1_weighted": {
+            "lower": 0.7104011860431763,
+            "upper": 0.7668672012148978
+          },
+          "accuracy": {
+            "lower": 0.7043837675350701,
+            "upper": 0.7605460921843687
+          }
+        }
+      }
+    },
+    {
+      "C": 100.0,
+      "task": "humanitarian",
+      "n_samples": 998,
+      "labels": [
+        "affected_individuals",
+        "infrastructure_and_utility_damage",
+        "rescue_volunteering_or_donation_effort",
+        "other_relevant_information",
+        "not_humanitarian"
+      ],
+      "f1_macro": 0.6226498633875475,
+      "f1_weighted": 0.7472729906603595,
+      "accuracy": 0.7424849699398798,
+      "per_class": {
+        "affected_individuals": {
+          "precision": 0.2857142857142857,
+          "recall": 0.2222222222222222,
+          "f1-score": 0.25,
+          "support": 9
+        },
+        "infrastructure_and_utility_damage": {
+          "precision": 0.5979381443298969,
+          "recall": 0.725,
+          "f1-score": 0.655367231638418,
+          "support": 80
+        },
+        "rescue_volunteering_or_donation_effort": {
+          "precision": 0.6589595375722543,
+          "recall": 0.7651006711409396,
+          "f1-score": 0.7080745341614907,
+          "support": 149
+        },
+        "other_relevant_information": {
+          "precision": 0.6323024054982818,
+          "recall": 0.7698744769874477,
+          "f1-score": 0.6943396226415094,
+          "support": 239
+        },
+        "not_humanitarian": {
+          "precision": 0.8906976744186047,
+          "recall": 0.7351247600767754,
+          "f1-score": 0.8054679284963197,
+          "support": 521
+        }
+      },
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          5,
+          0,
+          1
+        ],
+        [
+          1,
+          58,
+          5,
+          9,
+          7
+        ],
+        [
+          0,
+          8,
+          114,
+          14,
+          13
+        ],
+        [
+          1,
+          15,
+          13,
+          184,
+          26
+        ],
+        [
+          3,
+          15,
+          36,
+          84,
+          383
+        ]
+      ],
+      "confusion_matrix_axes": {
+        "rows": "y_true",
+        "columns": "y_pred"
+      },
+      "bootstrap": {
+        "n_resamples": 1000,
+        "seed": 42,
+        "confidence_level": 0.95,
+        "method": "paired ordinary percentile bootstrap over tweet-image rows",
+        "fixed_labels": true,
+        "zero_division": 0,
+        "intervals": {
+          "f1_macro": {
+            "lower": 0.5571243413728635,
+            "upper": 0.6844458057318482
+          },
+          "f1_weighted": {
+            "lower": 0.7185142407146697,
+            "upper": 0.7745773165475183
+          },
+          "accuracy": {
+            "lower": 0.7134268537074149,
+            "upper": 0.7705410821643287
+          }
+        }
+      }
+    }
+  ]
+}

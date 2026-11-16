@@ -1,0 +1,7 @@
+task,split,initial_rows,retained_rows,missing_images,corrupted_images,removed_rows,duplicate_pair_excess,initial_multi_image_tweets,retained_multi_image_tweets
+informative,train,9601,9601,0,0,0,0,772,772
+informative,dev,1573,1573,0,0,0,0,0,0
+informative,test,1534,1534,0,0,0,0,0,0
+humanitarian,train,6126,6126,0,0,0,0,545,545
+humanitarian,dev,998,998,0,0,0,0,0,0
+humanitarian,test,955,955,0,0,0,0,0,0

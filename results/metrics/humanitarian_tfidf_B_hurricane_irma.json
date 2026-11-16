@@ -1,0 +1,114 @@
+{
+  "task": "humanitarian",
+  "n_samples": 215,
+  "labels": [
+    "affected_individuals",
+    "infrastructure_and_utility_damage",
+    "rescue_volunteering_or_donation_effort",
+    "other_relevant_information",
+    "not_humanitarian"
+  ],
+  "f1_macro": 0.48062249027358944,
+  "f1_weighted": 0.6323761074954134,
+  "accuracy": 0.6465116279069767,
+  "per_class": {
+    "affected_individuals": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1
+    },
+    "infrastructure_and_utility_damage": {
+      "precision": 0.4444444444444444,
+      "recall": 0.47058823529411764,
+      "f1-score": 0.45714285714285713,
+      "support": 17
+    },
+    "rescue_volunteering_or_donation_effort": {
+      "precision": 0.7272727272727273,
+      "recall": 0.6153846153846154,
+      "f1-score": 0.6666666666666666,
+      "support": 26
+    },
+    "other_relevant_information": {
+      "precision": 0.627906976744186,
+      "recall": 0.8617021276595744,
+      "f1-score": 0.726457399103139,
+      "support": 94
+    },
+    "not_humanitarian": {
+      "precision": 0.7391304347826086,
+      "recall": 0.44155844155844154,
+      "f1-score": 0.5528455284552846,
+      "support": 77
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      8,
+      0,
+      9,
+      0
+    ],
+    [
+      0,
+      1,
+      16,
+      6,
+      3
+    ],
+    [
+      0,
+      2,
+      2,
+      81,
+      9
+    ],
+    [
+      0,
+      7,
+      4,
+      32,
+      34
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.41159592309680487,
+        "upper": 0.5368094410170682
+      },
+      "f1_weighted": {
+        "lower": 0.5626831369350335,
+        "upper": 0.6975624629817705
+      },
+      "accuracy": {
+        "lower": 0.5767441860465117,
+        "upper": 0.7070930232558138
+      }
+    }
+  },
+  "model": "tfidf",
+  "protocol": "B",
+  "fold": "hurricane_irma",
+  "subset": "test",
+  "prediction_file": "results/predictions/humanitarian_tfidf_B_hurricane_irma.csv"
+}

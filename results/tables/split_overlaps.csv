@@ -1,0 +1,7 @@
+task,split_a,split_b,common_tweet_ids,common_pairs
+informative,train,dev,0,0
+informative,train,test,0,0
+informative,dev,test,0,0
+humanitarian,train,dev,0,0
+humanitarian,train,test,0,0
+humanitarian,dev,test,0,0

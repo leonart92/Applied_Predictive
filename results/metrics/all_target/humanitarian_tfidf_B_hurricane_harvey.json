@@ -1,0 +1,114 @@
+{
+  "task": "humanitarian",
+  "n_samples": 1954,
+  "labels": [
+    "affected_individuals",
+    "infrastructure_and_utility_damage",
+    "rescue_volunteering_or_donation_effort",
+    "other_relevant_information",
+    "not_humanitarian"
+  ],
+  "f1_macro": 0.5439354818008006,
+  "f1_weighted": 0.698358502149814,
+  "accuracy": 0.702661207778915,
+  "per_class": {
+    "affected_individuals": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 21
+    },
+    "infrastructure_and_utility_damage": {
+      "precision": 0.7243589743589743,
+      "recall": 0.48497854077253216,
+      "f1-score": 0.5809768637532133,
+      "support": 233
+    },
+    "rescue_volunteering_or_donation_effort": {
+      "precision": 0.7450549450549451,
+      "recall": 0.8432835820895522,
+      "f1-score": 0.7911318553092183,
+      "support": 402
+    },
+    "other_relevant_information": {
+      "precision": 0.5450819672131147,
+      "recall": 0.6700251889168766,
+      "f1-score": 0.6011299435028249,
+      "support": 397
+    },
+    "not_humanitarian": {
+      "precision": 0.7669789227166276,
+      "recall": 0.7269700332963374,
+      "f1-score": 0.7464387464387464,
+      "support": 901
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      2,
+      8,
+      4,
+      7
+    ],
+    [
+      0,
+      113,
+      18,
+      41,
+      61
+    ],
+    [
+      0,
+      7,
+      339,
+      17,
+      39
+    ],
+    [
+      0,
+      18,
+      21,
+      266,
+      92
+    ],
+    [
+      1,
+      16,
+      69,
+      160,
+      655
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.5242044666448333,
+        "upper": 0.5616521720130649
+      },
+      "f1_weighted": {
+        "lower": 0.6768764810513344,
+        "upper": 0.7173170690694517
+      },
+      "accuracy": {
+        "lower": 0.6816786079836233,
+        "upper": 0.721596724667349
+      }
+    }
+  },
+  "model": "tfidf",
+  "protocol": "B",
+  "fold": "hurricane_harvey",
+  "subset": "all_target",
+  "prediction_file": "results/predictions/all_target/humanitarian_tfidf_B_hurricane_harvey.csv"
+}
