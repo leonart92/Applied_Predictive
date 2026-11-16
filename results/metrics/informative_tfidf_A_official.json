@@ -1,0 +1,66 @@
+{
+  "task": "informative",
+  "n_samples": 1534,
+  "labels": [
+    "informative",
+    "not_informative"
+  ],
+  "f1_macro": 0.7855416289223551,
+  "f1_weighted": 0.8169408827701157,
+  "accuracy": 0.8246414602346805,
+  "per_class": {
+    "informative": {
+      "precision": 0.8283002588438308,
+      "recall": 0.9320388349514563,
+      "f1-score": 0.8771128369118318,
+      "support": 1030
+    },
+    "not_informative": {
+      "precision": 0.8133333333333334,
+      "recall": 0.6051587301587301,
+      "f1-score": 0.6939704209328783,
+      "support": 504
+    }
+  },
+  "confusion_matrix": [
+    [
+      960,
+      70
+    ],
+    [
+      199,
+      305
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.7627528257463555,
+        "upper": 0.8068934465329644
+      },
+      "f1_weighted": {
+        "lower": 0.7957643699042781,
+        "upper": 0.8374653748893071
+      },
+      "accuracy": {
+        "lower": 0.8044328552803129,
+        "upper": 0.8435625814863104
+      }
+    }
+  },
+  "model": "tfidf",
+  "protocol": "A",
+  "fold": "official",
+  "subset": "test",
+  "prediction_file": "results/predictions/informative_tfidf_A_official.csv"
+}

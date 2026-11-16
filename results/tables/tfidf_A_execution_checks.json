@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "executed_code_cells": 11,
+  "notebook_errors": 0,
+  "unchanged_source_and_split_sha256": {
+    "splits/informative_test.csv": "e54d24db785c7390b47b80ab5d0b628548f3d772aa9e0476f43ef9ffa8a937d3",
+    "splits/informative_dev.csv": "af854f3f17c6a99f2290219d24b4d4d44eeb097010f28b1bc4b72d2626baf8ed",
+    "splits/informative_train.csv": "720cf198ee2b9051e270eaaa753051d6dde882959b7a6550c44a58fa0b70759c",
+    "splits/humanitarian_test.csv": "d63ed034dac6f41f71bbfaea862d8ec308b46110ec3cd234682bfa6a7d433039",
+    "splits/humanitarian_dev.csv": "916bad456c1aaed21ab1690e49cd2edd2618fa15698ab742d800f8cc3244ec2a",
+    "splits/humanitarian_train.csv": "22b9946040ff0969a4f40136ee92150195b26def094f18be10a87f1bf2b6e801",
+    "src/prepare_data.py": "9dcf62f35b9d2b43911ebac1e33d719b413a70f8b8e41e7caaa1d300285d75bf",
+    "src/data.py": "ec586b7c66756234c73ffa7409b63592f7d91610011a9a748e0886c6aba1357f",
+    "src/evaluate.py": "54e3cc2ebd44ea1816f28e27922b512737aa932cb80fe4a33d2bb45db340d6d0"
+  },
+  "test_inference_calls_per_task": 1,
+  "tested_C": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "selected_C": {
+    "informative": 1.0,
+    "humanitarian": 100.0
+  },
+  "checks": [
+    "notebook_schema",
+    "ordered_complete_execution",
+    "max_dev_f1_selection",
+    "probability_class_order",
+    "prediction_rows",
+    "bootstrap_configuration",
+    "matrix_csv_matches_json",
+    "original_files_unchanged",
+    "figures_visually_checked"
+  ],
+  "existing_unit_tests_passed": 10
+}

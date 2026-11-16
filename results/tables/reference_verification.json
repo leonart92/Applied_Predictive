@@ -1,0 +1,361 @@
+{
+  "status": "passed",
+  "reference_source": "Ofli et al. (2020), Table 1",
+  "splits": [
+    {
+      "task": "informative",
+      "split": "train",
+      "rows": 9601,
+      "distinct_tweet_ids": 8293,
+      "expected_rows": 9601,
+      "expected_tweet_ids": 8293,
+      "status": "passed"
+    },
+    {
+      "task": "informative",
+      "split": "dev",
+      "rows": 1573,
+      "distinct_tweet_ids": 1573,
+      "expected_rows": 1573,
+      "expected_tweet_ids": 1573,
+      "status": "passed"
+    },
+    {
+      "task": "informative",
+      "split": "test",
+      "rows": 1534,
+      "distinct_tweet_ids": 1534,
+      "expected_rows": 1534,
+      "expected_tweet_ids": 1534,
+      "status": "passed"
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "rows": 6126,
+      "distinct_tweet_ids": 5263,
+      "expected_rows": 6126,
+      "expected_tweet_ids": 5263,
+      "status": "passed"
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "rows": 998,
+      "distinct_tweet_ids": 998,
+      "expected_rows": 998,
+      "expected_tweet_ids": 998,
+      "status": "passed"
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "rows": 955,
+      "distinct_tweet_ids": 955,
+      "expected_rows": 955,
+      "expected_tweet_ids": 955,
+      "status": "passed"
+    }
+  ],
+  "task_totals": {
+    "informative": {
+      "rows": 12708,
+      "distinct_tweet_ids": 11400
+    },
+    "humanitarian": {
+      "rows": 8079,
+      "distinct_tweet_ids": 7216
+    }
+  },
+  "total_rows": 20787,
+  "csv_unchanged_sha256": true,
+  "humanitarian_class_references": {
+    "affected_individuals": {
+      "expected_total_texts": 88,
+      "expected_test_rows": 9,
+      "status": "passed"
+    },
+    "infrastructure_and_utility_damage": {
+      "expected_total_texts": 657,
+      "expected_test_rows": 81,
+      "status": "passed"
+    },
+    "rescue_volunteering_or_donation_effort": {
+      "expected_total_texts": 1037,
+      "expected_test_rows": 126,
+      "status": "passed"
+    },
+    "other_relevant_information": {
+      "expected_total_texts": 1666,
+      "expected_test_rows": 235,
+      "status": "passed"
+    },
+    "not_humanitarian": {
+      "expected_total_texts": 3768,
+      "expected_test_rows": 504,
+      "status": "passed"
+    }
+  },
+  "class_counts": [
+    {
+      "task": "informative",
+      "split": "train",
+      "label": "informative",
+      "count": 6345
+    },
+    {
+      "task": "informative",
+      "split": "train",
+      "label": "not_informative",
+      "count": 3256
+    },
+    {
+      "task": "informative",
+      "split": "dev",
+      "label": "informative",
+      "count": 1056
+    },
+    {
+      "task": "informative",
+      "split": "dev",
+      "label": "not_informative",
+      "count": 517
+    },
+    {
+      "task": "informative",
+      "split": "test",
+      "label": "informative",
+      "count": 1030
+    },
+    {
+      "task": "informative",
+      "split": "test",
+      "label": "not_informative",
+      "count": 504
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "label": "affected_individuals",
+      "count": 71
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "label": "infrastructure_and_utility_damage",
+      "count": 612
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "label": "not_humanitarian",
+      "count": 3252
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "label": "other_relevant_information",
+      "count": 1279
+    },
+    {
+      "task": "humanitarian",
+      "split": "train",
+      "label": "rescue_volunteering_or_donation_effort",
+      "count": 912
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "label": "affected_individuals",
+      "count": 9
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "label": "infrastructure_and_utility_damage",
+      "count": 80
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "label": "not_humanitarian",
+      "count": 521
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "label": "other_relevant_information",
+      "count": 239
+    },
+    {
+      "task": "humanitarian",
+      "split": "dev",
+      "label": "rescue_volunteering_or_donation_effort",
+      "count": 149
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "label": "affected_individuals",
+      "count": 9
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "label": "infrastructure_and_utility_damage",
+      "count": 81
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "label": "not_humanitarian",
+      "count": 504
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "label": "other_relevant_information",
+      "count": 235
+    },
+    {
+      "task": "humanitarian",
+      "split": "test",
+      "label": "rescue_volunteering_or_donation_effort",
+      "count": 126
+    }
+  ],
+  "informative_class_reference": "No per-class informative counts specified in PROJET.md section 3; observed counts sum to the reference split sizes.",
+  "protocol_checks": {
+    "official_both_tasks": "passed",
+    "text_only_training": "passed",
+    "all_14_event_folds": "passed"
+  },
+  "protocol_b_sizes": [
+    {
+      "task": "informative",
+      "fold": "hurricane_harvey",
+      "train_pairs": 7250,
+      "train_texts": 6217,
+      "dev": 1160,
+      "test": 393,
+      "test_all_target": 3157
+    },
+    {
+      "task": "informative",
+      "fold": "hurricane_irma",
+      "train_pairs": 7485,
+      "train_texts": 6446,
+      "dev": 1231,
+      "test": 324,
+      "test_all_target": 2782
+    },
+    {
+      "task": "informative",
+      "fold": "hurricane_maria",
+      "train_pairs": 7227,
+      "train_texts": 6288,
+      "dev": 1205,
+      "test": 359,
+      "test_all_target": 3101
+    },
+    {
+      "task": "informative",
+      "fold": "mexico_earthquake",
+      "train_pairs": 8762,
+      "train_texts": 7552,
+      "dev": 1425,
+      "test": 127,
+      "test_all_target": 1114
+    },
+    {
+      "task": "informative",
+      "fold": "iraq_iran_earthquake",
+      "train_pairs": 9217,
+      "train_texts": 7996,
+      "dev": 1515,
+      "test": 58,
+      "test_all_target": 500
+    },
+    {
+      "task": "informative",
+      "fold": "california_wildfires",
+      "train_pairs": 8738,
+      "train_texts": 7491,
+      "dev": 1420,
+      "test": 179,
+      "test_all_target": 1195
+    },
+    {
+      "task": "informative",
+      "fold": "srilanka_floods",
+      "train_pairs": 8927,
+      "train_texts": 7768,
+      "dev": 1482,
+      "test": 94,
+      "test_all_target": 859
+    },
+    {
+      "task": "humanitarian",
+      "fold": "hurricane_harvey",
+      "train_pairs": 4643,
+      "train_texts": 3967,
+      "dev": 775,
+      "test": 248,
+      "test_all_target": 1954
+    },
+    {
+      "task": "humanitarian",
+      "fold": "hurricane_irma",
+      "train_pairs": 4734,
+      "train_texts": 4052,
+      "dev": 757,
+      "test": 215,
+      "test_all_target": 1848
+    },
+    {
+      "task": "humanitarian",
+      "fold": "hurricane_maria",
+      "train_pairs": 4402,
+      "train_texts": 3801,
+      "dev": 726,
+      "test": 232,
+      "test_all_target": 2228
+    },
+    {
+      "task": "humanitarian",
+      "fold": "mexico_earthquake",
+      "train_pairs": 5698,
+      "train_texts": 4881,
+      "dev": 920,
+      "test": 79,
+      "test_all_target": 585
+    },
+    {
+      "task": "humanitarian",
+      "fold": "iraq_iran_earthquake",
+      "train_pairs": 5951,
+      "train_texts": 5122,
+      "dev": 969,
+      "test": 23,
+      "test_all_target": 227
+    },
+    {
+      "task": "humanitarian",
+      "fold": "california_wildfires",
+      "train_pairs": 5764,
+      "train_texts": 4927,
+      "dev": 927,
+      "test": 78,
+      "test_all_target": 511
+    },
+    {
+      "task": "humanitarian",
+      "fold": "srilanka_floods",
+      "train_pairs": 5564,
+      "train_texts": 4828,
+      "dev": 914,
+      "test": 80,
+      "test_all_target": 726
+    }
+  ]
+}

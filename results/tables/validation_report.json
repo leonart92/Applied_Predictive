@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "pillow_version": "13.0.0",
+  "checks": [
+    "six_outputs",
+    "schema",
+    "required_fields",
+    "expected_classes",
+    "task_label_agreement",
+    "image_verify_and_full_decode",
+    "csv_round_trip",
+    "ordered_source_preservation",
+    "pair_duplicates_reported",
+    "multiple_images_preserved",
+    "counts_and_exclusions_reconciled"
+  ],
+  "reference_comparison": "separate audit: results/tables/reference_verification.json (not recomputed here)",
+  "unique_source_images": 12708,
+  "unique_missing_images": 0,
+  "unique_corrupted_images": 0,
+  "sha256": {
+    "data/crisismmd_datasplit_agreed_label/task_informative_text_img_agreed_lab_train.tsv": "e87dae90a02ec96143e52d035346fc0bf0b960dc3560885983fd01b4a961891d",
+    "splits/informative_train.csv": "720cf198ee2b9051e270eaaa753051d6dde882959b7a6550c44a58fa0b70759c",
+    "data/crisismmd_datasplit_agreed_label/task_informative_text_img_agreed_lab_dev.tsv": "34f70342ec8d71c9ac39385c05e891cc7fa46f245105bb20263720450987cf77",
+    "splits/informative_dev.csv": "af854f3f17c6a99f2290219d24b4d4d44eeb097010f28b1bc4b72d2626baf8ed",
+    "data/crisismmd_datasplit_agreed_label/task_informative_text_img_agreed_lab_test.tsv": "5937b90fc5459fbbb63ea3da7877768d14248d00f5d7b2f9d648cbebe5b21faf",
+    "splits/informative_test.csv": "e54d24db785c7390b47b80ab5d0b628548f3d772aa9e0476f43ef9ffa8a937d3",
+    "data/crisismmd_datasplit_agreed_label/task_humanitarian_text_img_agreed_lab_train.tsv": "c45357a5d3de16a20255b12922f713bc7c6db10ec162783beaae0f015cb1f4d9",
+    "splits/humanitarian_train.csv": "22b9946040ff0969a4f40136ee92150195b26def094f18be10a87f1bf2b6e801",
+    "data/crisismmd_datasplit_agreed_label/task_humanitarian_text_img_agreed_lab_dev.tsv": "825ac004c5caa8dd1eebd5643f2a3bf4c73b7b4e14887fe3700cf2874f9c9c00",
+    "splits/humanitarian_dev.csv": "916bad456c1aaed21ab1690e49cd2edd2618fa15698ab742d800f8cc3244ec2a",
+    "data/crisismmd_datasplit_agreed_label/task_humanitarian_text_img_agreed_lab_test.tsv": "bf2ea367ed48e91e68525daa1ace8fd49535d170bcad116e0214e468b958f6a3",
+    "splits/humanitarian_test.csv": "d63ed034dac6f41f71bbfaea862d8ec308b46110ec3cd234682bfa6a7d433039"
+  }
+}

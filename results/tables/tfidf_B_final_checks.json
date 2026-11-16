@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "unit_tests": {
+    "total": 15,
+    "existing": 10,
+    "new_A_B_comparison_tests": 5,
+    "failures": 0
+  },
+  "notebook": {
+    "schema": "valid",
+    "executed_code_cells": 9,
+    "execution_order": "sequential",
+    "errors": 0
+  },
+  "checked_artifacts": {
+    "folds": 14,
+    "C_candidates": 70,
+    "prediction_csv": 42,
+    "metrics_json": 42,
+    "confusion_matrices": 42,
+    "population_rows": 56
+  },
+  "A_probabilities_and_predictions_reused_exactly": true,
+  "A_results_and_sources_sha256_unchanged": true,
+  "official_test_and_all_target_predictions_consistent": true,
+  "selection_and_gap_match_tables": true,
+  "visual_QA": [
+    "humanitarian/hurricane_maria/out_of_domain",
+    "informative/srilanka_floods/in_domain",
+    "humanitarian/gap_chart"
+  ],
+  "notebook_sha256": "cd3dc643657c3f57d768f19eed93052b83aaabf935e0b03be05cec6de1333fed"
+}

@@ -1,0 +1,126 @@
+{
+  "task": "humanitarian",
+  "event_name": "mexico_earthquake",
+  "seed": 42,
+  "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "C": 100.0,
+  "f1_macro_dev": 0.5718333442934803,
+  "logistic_parameters": {
+    "class_weight": "balanced",
+    "solver": "lbfgs",
+    "penalty": "l2",
+    "max_iter": 2000,
+    "tol": 0.0001,
+    "random_state": 42
+  },
+  "vectorizer_parameters": {
+    "analyzer": "word",
+    "binary": false,
+    "decode_error": "strict",
+    "dtype": "<class 'numpy.float64'>",
+    "encoding": "utf-8",
+    "input": "content",
+    "lowercase": true,
+    "max_df": 1.0,
+    "max_features": null,
+    "min_df": 1,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "norm": "l2",
+    "preprocessor": null,
+    "smooth_idf": true,
+    "stop_words": null,
+    "strip_accents": null,
+    "sublinear_tf": false,
+    "token_pattern": "(?u)\\b\\w\\w+\\b",
+    "tokenizer": null,
+    "use_idf": true,
+    "vocabulary": null
+  },
+  "vocabulary_size": 71151,
+  "selection": "max dev macro F1; exact ties choose smallest C; fit train only",
+  "versions": {
+    "python": "3.11.2",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2"
+  },
+  "population_counts": [
+    {
+      "task": "humanitarian",
+      "event_name": "mexico_earthquake",
+      "subset": "train",
+      "rows": 4881,
+      "distinct_tweet_ids": 4881,
+      "repeated_tweet_rows": 0
+    },
+    {
+      "task": "humanitarian",
+      "event_name": "mexico_earthquake",
+      "subset": "dev",
+      "rows": 920,
+      "distinct_tweet_ids": 920,
+      "repeated_tweet_rows": 0
+    },
+    {
+      "task": "humanitarian",
+      "event_name": "mexico_earthquake",
+      "subset": "test",
+      "rows": 79,
+      "distinct_tweet_ids": 79,
+      "repeated_tweet_rows": 0
+    },
+    {
+      "task": "humanitarian",
+      "event_name": "mexico_earthquake",
+      "subset": "test_all_target",
+      "rows": 585,
+      "distinct_tweet_ids": 539,
+      "repeated_tweet_rows": 46
+    }
+  ],
+  "protected_sha256": {
+    "figures/humanitarian_tfidf_A_official_confusion_matrix.png": "cf99a58445e93c4068911f2e61db043928087396a2f33e5015ef51dfbe46ed0a",
+    "figures/informative_tfidf_A_official_confusion_matrix.png": "fe96dcc73ebf6c58fe9281082e6cd1e98b077fb3ab3c8044a70a73411f7c9d98",
+    "notebooks/02_baseline_tfidf.ipynb": "1ea27d9458c85e0492d60031f5d07552c0693d5d80f13dc715c3a5ebc5b595b5",
+    "reports/baseline_tfidf_A_report.md": "fb9018ddfc08aeee1ce62ff1c808712deffc14388dcb2f66ecbbb5620017cce2",
+    "results/metrics/humanitarian_tfidf_A_official.json": "403611a78f788dad093e3be7c242494a8f6a92555b31010be663c257fb39725f",
+    "results/metrics/informative_tfidf_A_official.json": "aace27cfdbb391701149b9b42ad0898696fdeea7e9d125967e1dc6f439fb8635",
+    "results/predictions/humanitarian_tfidf_A_official.csv": "8cfa4b0df04c7b9704d94b80a09db812d96769c54e49e066c4127ff8c0d3b661",
+    "results/predictions/informative_bertweet_A_official.csv": "014e42cfcf9d4a68dc6dd5be7ba2f3591f0647f01daa82b17e355b59a2d9e38c",
+    "results/predictions/informative_tfidf_A_official.csv": "5fd1ef686ad39edd9de8ffeddbee943e8bd1fdb1b220e02e6b2e77582d39f0d8",
+    "results/tables/humanitarian_tfidf_A_official_confusion_matrix.csv": "0f50edcde29a3598052bd02f36f5ecd7a253d957248907cc577b0c733cb48d18",
+    "results/tables/humanitarian_tfidf_A_official_per_class.csv": "28876aaece07b26f74f7dc054232cd2114b0298387160ad4c4bce692cbfd76c5",
+    "results/tables/humanitarian_tfidf_A_validation.csv": "62484a91471d56d673eb5b24d3e848e3179970bca632ddeea3cb325385f49ffb",
+    "results/tables/informative_tfidf_A_official_confusion_matrix.csv": "e995089da0d13e3597ab8c3de7ec9748cabed71143add6b332b1e23c8dc954f3",
+    "results/tables/informative_tfidf_A_official_per_class.csv": "53cb424449f93fdc62e88cbf9e77e7c1b3ef5ad8822eb8e2bf2b15c59b7d863f",
+    "results/tables/informative_tfidf_A_validation.csv": "0151f3ad9e570ddd9b22d13fb79f287535ca1d3aecbd97df630f20320906a180",
+    "results/tables/tfidf_A_dev_metrics.json": "aa1a383cf5df25e0dea4afd1b3c4402890467b1960c84d8b5fb4cfad5b44b2e7",
+    "results/tables/tfidf_A_execution_checks.json": "c3fee2b56b5bdb21a2b4df06b9c034fe2d7daadd3c1fe28fe7a8a46ea08b9855",
+    "results/tables/tfidf_A_run_config.json": "f565ee389dcdae806409c6070e68c151930526f0c03a40f4a745aa66777ed8d9",
+    "results/tables/tfidf_A_summary.csv": "0ca0f0c9e72e4d8d1b9a6bf605e8a25b333c7d1577b27851b406baa2513106ca",
+    "results/tables/tfidf_error_analysis_A_classes.csv": "7cdd8ac9ce96227578e5b4e2c50e6322b82dddaba07cebcb4c9652e54f1d6a81",
+    "splits/humanitarian_dev.csv": "916bad456c1aaed21ab1690e49cd2edd2618fa15698ab742d800f8cc3244ec2a",
+    "splits/humanitarian_test.csv": "d63ed034dac6f41f71bbfaea862d8ec308b46110ec3cd234682bfa6a7d433039",
+    "splits/humanitarian_train.csv": "22b9946040ff0969a4f40136ee92150195b26def094f18be10a87f1bf2b6e801",
+    "splits/informative_dev.csv": "af854f3f17c6a99f2290219d24b4d4d44eeb097010f28b1bc4b72d2626baf8ed",
+    "splits/informative_test.csv": "e54d24db785c7390b47b80ab5d0b628548f3d772aa9e0476f43ef9ffa8a937d3",
+    "splits/informative_train.csv": "720cf198ee2b9051e270eaaa753051d6dde882959b7a6550c44a58fa0b70759c",
+    "src/bertweet.py": "64062dfa91c79be6a686314809f5c537e57d81544a0fd12d33eb52a14f408214",
+    "src/data.py": "ec586b7c66756234c73ffa7409b63592f7d91610011a9a748e0886c6aba1357f",
+    "src/evaluate.py": "54e3cc2ebd44ea1816f28e27922b512737aa932cb80fe4a33d2bb45db340d6d0",
+    "src/prepare_data.py": "9dcf62f35b9d2b43911ebac1e33d719b413a70f8b8e41e7caaa1d300285d75bf"
+  },
+  "in_domain_provenance": "results/predictions/humanitarian_tfidf_A_official.csv",
+  "in_domain_C": 100.0,
+  "all_target_policy": "all original tweet-image pairs; no tweet deduplication"
+}

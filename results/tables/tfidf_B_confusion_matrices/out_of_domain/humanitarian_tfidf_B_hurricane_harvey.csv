@@ -1,0 +1,6 @@
+y_true,affected_individuals,infrastructure_and_utility_damage,rescue_volunteering_or_donation_effort,other_relevant_information,not_humanitarian
+affected_individuals,0,0,1,0,1
+infrastructure_and_utility_damage,0,8,4,3,5
+rescue_volunteering_or_donation_effort,0,1,42,2,5
+other_relevant_information,0,4,4,37,10
+not_humanitarian,0,3,9,19,90
