@@ -1,0 +1,114 @@
+{
+  "task": "humanitarian",
+  "n_samples": 511,
+  "labels": [
+    "affected_individuals",
+    "infrastructure_and_utility_damage",
+    "rescue_volunteering_or_donation_effort",
+    "other_relevant_information",
+    "not_humanitarian"
+  ],
+  "f1_macro": 0.5047057669883269,
+  "f1_weighted": 0.5495144021528348,
+  "accuracy": 0.547945205479452,
+  "per_class": {
+    "affected_individuals": {
+      "precision": 0.19230769230769232,
+      "recall": 0.625,
+      "f1-score": 0.29411764705882354,
+      "support": 8
+    },
+    "infrastructure_and_utility_damage": {
+      "precision": 0.43529411764705883,
+      "recall": 0.891566265060241,
+      "f1-score": 0.5849802371541502,
+      "support": 83
+    },
+    "rescue_volunteering_or_donation_effort": {
+      "precision": 0.4891304347826087,
+      "recall": 0.8653846153846154,
+      "f1-score": 0.625,
+      "support": 52
+    },
+    "other_relevant_information": {
+      "precision": 0.4368932038834951,
+      "recall": 0.47368421052631576,
+      "f1-score": 0.45454545454545453,
+      "support": 95
+    },
+    "not_humanitarian": {
+      "precision": 0.925,
+      "recall": 0.4065934065934066,
+      "f1-score": 0.5648854961832062,
+      "support": 273
+    }
+  },
+  "confusion_matrix": [
+    [
+      5,
+      0,
+      1,
+      0,
+      2
+    ],
+    [
+      3,
+      74,
+      2,
+      3,
+      1
+    ],
+    [
+      0,
+      5,
+      45,
+      2,
+      0
+    ],
+    [
+      1,
+      39,
+      4,
+      45,
+      6
+    ],
+    [
+      17,
+      52,
+      40,
+      53,
+      111
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.4513138335754572,
+        "upper": 0.5523656222860867
+      },
+      "f1_weighted": {
+        "lower": 0.5054084197609983,
+        "upper": 0.5918224614341995
+      },
+      "accuracy": {
+        "lower": 0.5048923679060665,
+        "upper": 0.5870841487279843
+      }
+    }
+  },
+  "model": "bertweet",
+  "protocol": "B",
+  "fold": "california_wildfires",
+  "subset": "all_target",
+  "prediction_file": "results/predictions/all_target/humanitarian_bertweet_B_california_wildfires.csv"
+}
