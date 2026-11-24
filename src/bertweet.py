@@ -1,15 +1,15 @@
 """Fine-tuning de BERTweet sur le texte des tweets de CrisisMMD.
 
-Protocole A (split officiel « agreed labels »), à partir des TSV officiels bruts.
-Écrit les prédictions du test dans results/predictions/, au format commun du projet.
+Protocol A trains on the official split. Protocol B holds one event out of
+train and dev and tests on that event only. Splits come from src/data.py;
+predictions and metrics are written with src/evaluate.py.
 
-Usage : python src/bertweet.py [informative|humanitarian]
+Usage:
+    python src/bertweet.py informative                          # protocol A
+    python src/bertweet.py humanitarian --event hurricane_maria  # protocol B
 """
-import csv
-import sys
-from pathlib import Path
+import argparse
 
-import pandas as pd
 import torch
 from sklearn.metrics import classification_report, f1_score
 from torch.utils.data import DataLoader
@@ -21,9 +21,18 @@ from transformers import (
     set_seed,
 )
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT / "data" / "crisismmd_datasplit_agreed_label"
+if __package__:
+    from .data import EVENTS, LABELS, ROOT, get_split
+    from .evaluate import evaluate_file, write_predictions
+else:
+    from data import EVENTS, LABELS, ROOT, get_split
+    from evaluate import evaluate_file, write_predictions
+
 PRED_DIR = ROOT / "results" / "predictions"
+METRIC_DIR = ROOT / "results" / "metrics"
+# Protocol B targets for the deep models (PROJET.md §4): a hurricane, a disaster
+# type seen in training, and the only wildfire, a type absent from training.
+TARGET_EVENTS = ("hurricane_maria", "california_wildfires")
 
 MODEL_NAME = "vinai/bertweet-base"
 MAX_LEN = 128
@@ -34,12 +43,6 @@ PATIENCE = 2  # early stopping : nombre d'epochs sans progrès du F1 macro dev
 SEED = 42
 
 DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-
-
-def load_split(task, split):
-    path = DATA_DIR / f"task_{task}_text_img_agreed_lab_{split}.tsv"
-    # QUOTE_NONE : ces TSV n'échappent rien, sinon pandas retire les guillemets des tweets qui commencent par "
-    return pd.read_csv(path, sep="\t", quoting=csv.QUOTE_NONE)
 
 
 def make_loader(df, tokenizer, label2id, shuffle=False):
@@ -98,12 +101,24 @@ def fit(model, train_loader, dev_loader, y_dev, class_weights):
     print(f"meilleur F1 macro dev : {best_f1:.4f}")
 
 
-def main(task):
-    train, dev, test = (load_split(task, split) for split in ("train", "dev", "test"))
-    train = train.drop_duplicates("tweet_id")  # modèle texte : un exemple par tweet, pas par image
-    classes = sorted(train["label"].unique())
-    label2id = {label: i for i, label in enumerate(classes)}
-    print(f"{task} · train : {len(train)} tweets · dev : {len(dev)} · test : {len(test)} · {DEVICE}")
+def save(frame, probas, task, protocol, fold, *, subset="test", folder=None):
+    """Write the predictions in the shared format, then their metrics JSON."""
+    labels = LABELS[task]
+    y_pred = [labels[i] for i in probas.argmax(axis=1)]
+    path = write_predictions(frame, y_pred, probas, task=task, model="bertweet", protocol=protocol,
+                             fold=fold, subset=subset, output_dir=PRED_DIR / folder if folder else None)
+    evaluate_file(path, subset=subset, output_dir=METRIC_DIR / folder if folder else None)
+    print(f"{subset} · {path.relative_to(ROOT)}")
+    print(classification_report(frame["label"], y_pred, labels=list(labels), digits=4, zero_division=0))
+
+
+def main(task, event=None):
+    protocol, fold = ("B", event) if event else ("A", "official")
+    splits = get_split(task, protocol, fold, text_only=True)
+    train, dev, test = splits["train"], splits["dev"], splits["test"]
+    labels = LABELS[task]
+    label2id = {label: i for i, label in enumerate(labels)}
+    print(f"{task} · {protocol}/{fold} · train : {len(train)} tweets · dev : {len(dev)} · test : {len(test)} · {DEVICE}")
 
     # normalization=True applique la normalisation de BERTweet : mentions -> @USER, URLs -> HTTPURL, emojis -> texte
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, normalization=True)
@@ -112,27 +127,32 @@ def main(task):
     test_loader = make_loader(test, tokenizer, label2id)
 
     set_seed(SEED)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=len(classes)).to(DEVICE)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=len(labels)).to(DEVICE)
 
     # Déséquilibre des classes : poids "balanced" dans la loss, même formule que scikit-learn
-    counts = train["label"].value_counts()[classes].to_numpy()
-    class_weights = torch.tensor(len(train) / (len(classes) * counts), dtype=torch.float32, device=DEVICE)
+    counts = train["label"].value_counts()[list(labels)].to_numpy()
+    class_weights = torch.tensor(len(train) / (len(labels) * counts), dtype=torch.float32, device=DEVICE)
     fit(model, train_loader, dev_loader, dev["label"].map(label2id).to_numpy(), class_weights)
 
     probas = predict(model, test_loader)
-    predictions = test[["tweet_id", "image_id", "event_name"]].copy()
-    predictions["y_true"] = test["label"]
-    predictions["y_pred"] = [classes[i] for i in probas.argmax(axis=1)]
-    for i, label in enumerate(classes):
-        predictions[f"proba_{label}"] = probas[:, i]
+    save(test, probas, task, protocol, fold)
 
-    PRED_DIR.mkdir(parents=True, exist_ok=True)
-    predictions.to_csv(PRED_DIR / f"{task}_bertweet_A_official.csv", index=False, float_format="%.6f")
-
-    # Aperçu rapide : les métriques du rapport sont calculées par src/evaluate.py à partir de ce CSV
-    print(classification_report(predictions["y_true"], predictions["y_pred"], digits=4))
-    print(pd.crosstab(predictions["y_true"], predictions["y_pred"]))
+    if protocol == "A":
+        # In-domain side of the protocol B gap: this same model, restricted to
+        # the test tweets of each target event, so A and B score identical rows.
+        for target in TARGET_EVENTS:
+            mask = (test["event_name"] == target).to_numpy()
+            save(test[mask], probas[mask], task, "B", target, folder="in_domain")
+    else:
+        # Supplementary score on every tweet of the unseen event (train, dev and test).
+        all_target = splits["test_all_target"]
+        save(all_target, predict(model, make_loader(all_target, tokenizer, label2id)),
+             task, protocol, fold, subset="all_target")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "informative")
+    parser = argparse.ArgumentParser(description="Fine-tune BERTweet on CrisisMMD tweet text.")
+    parser.add_argument("task", nargs="?", default="informative", choices=tuple(LABELS))
+    parser.add_argument("--event", choices=EVENTS, help="held-out event for protocol B; protocol A if omitted")
+    args = parser.parse_args()
+    main(args.task, args.event)
