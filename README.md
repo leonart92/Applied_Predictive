@@ -59,12 +59,24 @@ Protocol A (in-domain test split, seed 42):
 | Task | Model | Macro F1 | Weighted F1 | Accuracy |
 |---|---|---|---|---|
 | 1 · Informative (1,534 tweets) | TF-IDF + logistic regression | 0.786 | 0.817 | 0.825 |
-| 1 · Informative (1,534 tweets) | Fine-tuned BERTweet | 0.860 | 0.876 | 0.876 |
+| 1 · Informative (1,534 tweets) | Fine-tuned BERTweet | 0.859 | 0.876 | 0.875 |
 | 1 · Informative (1,534 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.647 | 0.655 | 0.649 |
 | 2 · Humanitarian (955 tweets) | TF-IDF + logistic regression | 0.634 | 0.744 | 0.740 |
+| 2 · Humanitarian (955 tweets) | Fine-tuned BERTweet | 0.697 | 0.808 | 0.802 |
 | 2 · Humanitarian (955 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.554 | 0.659 | 0.686 |
 
 For reference, the text-only model of Ofli et al. (2020) reaches weighted F1 scores of 80.9 on Task 1 and 67.7 on Task 2 on the same splits. Detailed Protocol A, Protocol B (14 unseen-disaster folds) and error-analysis reports for the TF-IDF baseline are available in `reports/`.
+
+Protocol B for BERTweet (macro F1 on the test tweets of the held-out event; the in-domain model is the Protocol A model on the same tweets):
+
+| Task | Held-out event | Test tweets | In-domain | Unseen event | Gap |
+|---|---|---|---|---|---|
+| 1 · Informative | Hurricane Maria | 359 | 0.874 | 0.876 | −0.002 |
+| 1 · Informative | California wildfires | 179 | 0.700 | 0.664 | +0.035 |
+| 2 · Humanitarian | Hurricane Maria | 232 | 0.860 | 0.786 | +0.074 |
+| 2 · Humanitarian | California wildfires | 78 | 0.487 | 0.382 | +0.106 |
+
+Every score, with its 95% bootstrap interval, is in `results/metrics/`.
 
 ## Getting started
 
@@ -88,12 +100,18 @@ Run the unit test suite:
 python -m unittest discover -s tests -v
 ```
 
-Train BERTweet and write the test predictions:
+Train BERTweet and write its predictions and metrics:
 
 ```bash
-python src/bertweet.py                # task 1, informative
-python src/bertweet.py humanitarian   # task 2
+python src/bertweet.py informative                                   # Protocol A, task 1
+python src/bertweet.py humanitarian                                  # Protocol A, task 2
+python src/bertweet.py informative --event hurricane_maria           # Protocol B
+python src/bertweet.py informative --event california_wildfires
+python src/bertweet.py humanitarian --event hurricane_maria
+python src/bertweet.py humanitarian --event california_wildfires
 ```
+
+A Protocol A run also writes the in-domain side of the Protocol B comparison for the two target events (`results/{predictions,metrics}/in_domain/`). A Protocol B run also scores every tweet of the held-out event (`all_target/`).
 
 Task 1 takes about four minutes on an Apple Silicon GPU. The script picks CUDA, then Apple MPS, then the CPU.
 
@@ -129,7 +147,7 @@ python -m src.evaluate results/predictions/informative_tfidf_A_official.csv
 │   ├── prepare_data.py      # TSV + image validation and split generation
 │   ├── data.py              # shared split loader for protocols A and B
 │   ├── evaluate.py          # shared evaluation metrics and bootstrap CI
-│   ├── bertweet.py          # BERTweet fine-tuning and test predictions
+│   ├── bertweet.py          # BERTweet fine-tuning, Protocol A and B predictions
 │   ├── llm_prompt.txt       # fixed zero-shot prompts for tasks 1 and 2
 │   ├── llm_zero_shot.py     # zero-shot LLM inference and Protocol A/B export
 │   └── error_analysis.py    # cross-model error analysis and comparison tables
