@@ -35,14 +35,16 @@ data/crisismmd_datasplit_agreed_label/task_{informative,humanitarian}_text_img_a
 
 The official host was unreachable in November 2026. The same archive is available through the Internet Archive's Wayback Machine.
 
+The image models need the images themselves, under `data/CrisisMMD_v2.0/data_image/`. `python src/fetch_images.py` downloads the 1.8 GB `CrisisMMD_v2.0` archive from that snapshot with resumable parallel range requests, extracts only its `data_image` subtree, and then opens and fully decodes each of the 12,708 images the splits reference, reusing the checker of `src/prepare_data.py`. It writes `results/tables/image_fetch_report.json` and fails rather than silently dropping an unusable image.
+
 ## Models
 
 | Model | Input | Status |
 |---|---|---|
 | TF-IDF + logistic regression | text | available: `notebooks/02_baseline_tfidf.ipynb`, `notebooks/02b_tfidf_protocol_b.ipynb` |
 | Fine-tuned BERTweet (`vinai/bertweet-base`) | text | available: `src/bertweet.py` |
-| Fine-tuned Vision Transformer | image | planned |
-| CLIP embeddings fusion + logistic regression | text + image | planned |
+| Fine-tuned Vision Transformer (`google/vit-base-patch16-224-in21k`) | image | available: `src/vit.py` |
+| CLIP embeddings fusion + logistic regression (`openai/clip-vit-base-patch32`) | text + image | available: `src/clip_fusion.py` |
 | Zero-shot LLM (`llama3.2:latest`) | text | available: `src/llm_zero_shot.py` |
 
 ## Evaluation
@@ -58,23 +60,46 @@ Protocol A (in-domain test split, seed 42):
 
 | Task | Model | Macro F1 | Weighted F1 | Accuracy |
 |---|---|---|---|---|
-| 1 · Informative (1,534 tweets) | TF-IDF + logistic regression | 0.786 | 0.817 | 0.825 |
-| 1 · Informative (1,534 tweets) | Fine-tuned BERTweet | 0.859 | 0.876 | 0.875 |
-| 1 · Informative (1,534 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.647 | 0.655 | 0.649 |
-| 2 · Humanitarian (955 tweets) | TF-IDF + logistic regression | 0.634 | 0.744 | 0.740 |
-| 2 · Humanitarian (955 tweets) | Fine-tuned BERTweet | 0.697 | 0.808 | 0.802 |
-| 2 · Humanitarian (955 tweets) | Zero-shot LLM (`llama3.2:latest`) | 0.554 | 0.659 | 0.686 |
+| 1 · Informative (1,534 pairs) | TF-IDF + logistic regression | 0.786 | 0.817 | 0.825 |
+| 1 · Informative (1,534 pairs) | Fine-tuned BERTweet | 0.859 | 0.876 | 0.875 |
+| 1 · Informative (1,534 pairs) | Fine-tuned ViT (image only) | 0.849 | 0.865 | 0.864 |
+| 1 · Informative (1,534 pairs) | **CLIP fusion + logistic regression** | **0.922** | 0.931 | 0.931 |
+| 1 · Informative (1,534 pairs) | Zero-shot LLM (`llama3.2:latest`) | 0.647 | 0.655 | 0.649 |
+| 2 · Humanitarian (955 pairs) | TF-IDF + logistic regression | 0.634 | 0.744 | 0.740 |
+| 2 · Humanitarian (955 pairs) | Fine-tuned BERTweet | 0.697 | 0.808 | 0.802 |
+| 2 · Humanitarian (955 pairs) | Fine-tuned ViT (image only) | 0.743 | 0.828 | 0.828 |
+| 2 · Humanitarian (955 pairs) | **CLIP fusion + logistic regression** | **0.820** | 0.880 | 0.879 |
+| 2 · Humanitarian (955 pairs) | Zero-shot LLM (`llama3.2:latest`) | 0.554 | 0.659 | 0.686 |
 
 For reference, the text-only model of Ofli et al. (2020) reaches weighted F1 scores of 80.9 on Task 1 and 67.7 on Task 2 on the same splits. Detailed Protocol A, Protocol B (14 unseen-disaster folds) and error-analysis reports for the TF-IDF baseline are available in `reports/`.
 
-Protocol B for BERTweet (macro F1 on the test tweets of the held-out event; the in-domain model is the Protocol A model on the same tweets):
+Multimodal fusion is the best model on both tasks, and its bootstrap interval overlaps no text-only model: +0.063 macro F1 over BERTweet on Task 1, +0.123 on Task 2. The image alone is enough to match the text on Task 1 and to beat it on Task 2, where deciding *which kind* of aid a tweet is about reads better from the photo than from 140 characters. Ablating the fusion (`results/tables/clip_fusion_ablation.csv`) separates the two halves:
 
-| Task | Held-out event | Test tweets | In-domain | Unseen event | Gap |
-|---|---|---|---|---|---|
-| 1 · Informative | Hurricane Maria | 359 | 0.874 | 0.876 | −0.002 |
-| 1 · Informative | California wildfires | 179 | 0.700 | 0.664 | +0.035 |
-| 2 · Humanitarian | Hurricane Maria | 232 | 0.860 | 0.786 | +0.074 |
-| 2 · Humanitarian | California wildfires | 78 | 0.487 | 0.382 | +0.106 |
+| Task | Text only (512) | Image only (512) | Fusion (1,024) |
+|---|---|---|---|
+| 1 · Informative | 0.864 | 0.884 | **0.922** |
+| 2 · Humanitarian | 0.693 | 0.768 | **0.820** |
+
+`reports/vit_clip_fusion_report.md` details both image models, including the leakage controls run before publishing these scores.
+
+Protocol B (macro F1 on the test pairs of the held-out event; the in-domain column is the Protocol A model scored on those same pairs, so the gap is the cost of never having seen the disaster):
+
+| Task | Model | Held-out event | Test pairs | In-domain | Unseen event | Gap |
+|---|---|---|---|---|---|---|
+| 1 · Informative | Fine-tuned BERTweet | Hurricane Maria | 359 | 0.874 | 0.876 | −0.002 |
+| 1 · Informative | Fine-tuned ViT | Hurricane Maria | 359 | 0.816 | 0.807 | +0.009 |
+| 1 · Informative | CLIP fusion | Hurricane Maria | 359 | 0.936 | 0.910 | +0.026 |
+| 1 · Informative | Fine-tuned BERTweet | California wildfires | 179 | 0.700 | 0.664 | +0.035 |
+| 1 · Informative | Fine-tuned ViT | California wildfires | 179 | 0.828 | 0.584 | **+0.244** |
+| 1 · Informative | CLIP fusion | California wildfires | 179 | 0.812 | 0.755 | +0.056 |
+| 2 · Humanitarian | Fine-tuned BERTweet | Hurricane Maria | 232 | 0.860 | 0.786 | +0.074 |
+| 2 · Humanitarian | Fine-tuned ViT | Hurricane Maria | 232 | 0.607 | 0.583 | +0.024 |
+| 2 · Humanitarian | CLIP fusion | Hurricane Maria | 232 | 0.857 | 0.893 | −0.036 |
+| 2 · Humanitarian | Fine-tuned BERTweet | California wildfires | 78 | 0.487 | 0.382 | +0.106 |
+| 2 · Humanitarian | Fine-tuned ViT | California wildfires | 78 | 0.517 | 0.453 | +0.065 |
+| 2 · Humanitarian | CLIP fusion | California wildfires | 78 | 0.574 | 0.539 | +0.035 |
+
+Holding out a hurricane costs almost nothing: three other hurricanes remain in training. Holding out the only wildfire is what hurts, and it hurts the image-only model most — the ViT loses 0.244 macro F1 on Task 1, the largest drop of any model in the project, because nothing in floods and rubble prepares it for smoke and flames. The fusion absorbs it (−0.056): the text still says "wildfire". The image helps most in a known domain, and the text is what rescues the model when the disaster type is new.
 
 Every score, with its 95% bootstrap interval, is in `results/metrics/`.
 
@@ -115,6 +140,34 @@ A Protocol A run also writes the in-domain side of the Protocol B comparison for
 
 Task 1 takes about four minutes on an Apple Silicon GPU. The script picks CUDA, then Apple MPS, then the CPU.
 
+Train the image model and the fusion model. Both need the images, so run `python src/fetch_images.py` first; both follow the same CLI, protocols and output layout as BERTweet:
+
+```bash
+python src/vit.py informative                                        # Protocol A, task 1
+python src/vit.py humanitarian
+python src/vit.py informative --event hurricane_maria                # Protocol B
+python src/vit.py informative --event california_wildfires
+python src/vit.py humanitarian --event hurricane_maria
+python src/vit.py humanitarian --event california_wildfires
+
+python src/clip_fusion.py informative --ablation                     # Protocol A, task 1
+python src/clip_fusion.py humanitarian --ablation
+python src/clip_fusion.py informative --event hurricane_maria        # Protocol B
+python src/clip_fusion.py informative --event california_wildfires
+python src/clip_fusion.py humanitarian --event hurricane_maria
+python src/clip_fusion.py humanitarian --event california_wildfires
+```
+
+The ViT is fine-tuned with BERTweet's recipe (batch 32, lr 2e-5, 5 epochs, patience 2, class-weighted loss, best epoch on dev macro F1), so the difference between the two models comes from the modality and not from the tuning. Each run takes about 25 to 40 minutes on an Apple Silicon GPU; `--batch-size` and `--workers` are available.
+
+CLIP is never fine-tuned: its frozen encoders turn each tweet and each image into a 512-dimension vector, the two are L2-normalized and concatenated, and the classifier on top is the TF-IDF baseline's logistic regression, with the same C grid selected on dev. The embeddings of all 12,708 images and of every text are computed once into `cache/` (about four minutes), so each later run takes seconds. `--ablation` scores text-only, image-only and fusion features into `results/tables/clip_fusion_ablation.csv`.
+
+Redraw the figures and confusion-matrix tables of any model from the metrics already written, without running a model again:
+
+```bash
+python src/plot_metrics.py clip_fusion vit
+```
+
 To reproduce the TF-IDF baseline and error analysis, run `notebooks/02_baseline_tfidf.ipynb` (Protocol A), `notebooks/02b_tfidf_protocol_b.ipynb` (Protocol B) and `notebooks/07_error_analysis_tfidf.ipynb` using the `.venv` kernel.
 
 Run the zero-shot LLM classifier (`llama3.2:latest` via Ollama at temperature 0, seed 42) and cross-model error analysis:
@@ -145,9 +198,14 @@ python -m src.evaluate results/predictions/informative_tfidf_A_official.csv
 ├── splits/                  # cleaned official agreed-label CSV splits
 ├── src/
 │   ├── prepare_data.py      # TSV + image validation and split generation
+│   ├── fetch_images.py      # image archive download, extraction and validation
 │   ├── data.py              # shared split loader for protocols A and B
 │   ├── evaluate.py          # shared evaluation metrics and bootstrap CI
+│   ├── images.py            # shared image loading for the image and fusion models
 │   ├── bertweet.py          # BERTweet fine-tuning, Protocol A and B predictions
+│   ├── vit.py               # Vision Transformer fine-tuning, image only
+│   ├── clip_fusion.py       # CLIP embedding fusion of text and image
+│   ├── plot_metrics.py      # figures and matrix tables from the saved metrics
 │   ├── llm_prompt.txt       # fixed zero-shot prompts for tasks 1 and 2
 │   ├── llm_zero_shot.py     # zero-shot LLM inference and Protocol A/B export
 │   └── error_analysis.py    # cross-model error analysis and comparison tables
@@ -160,9 +218,10 @@ python -m src.evaluate results/predictions/informative_tfidf_A_official.csv
 │   ├── metrics/             # JSON metrics and bootstrap CIs from src/evaluate.py
 │   └── tables/              # summary tables and validation checks
 ├── figures/                 # confusion matrices and generalization gap plots
-├── reports/                 # data preparation and TF-IDF experiment reports
-├── tests/                   # unit tests for data prep, splits and evaluation
+├── reports/                 # data preparation, TF-IDF and image/fusion reports
+├── tests/                   # unit tests for data prep, splits, evaluation and image models
 ├── data/                    # raw TSVs and images (not versioned)
+├── cache/                   # CLIP embeddings, rebuilt on demand (not versioned)
 └── requirements.txt         # pinned versions
 ```
 

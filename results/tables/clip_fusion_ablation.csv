@@ -1,0 +1,7 @@
+task,protocol,fold,mode,dimensions,C,f1_macro_dev,f1_macro_test,f1_weighted_test,accuracy_test,n_train,n_test
+humanitarian,A,official,fusion,1024,10.0,0.828044,0.820184,0.879689,0.878534,6126,955
+humanitarian,A,official,image,512,1.0,0.724808,0.767687,0.859199,0.855497,6126,955
+humanitarian,A,official,text,512,10.0,0.690617,0.692966,0.81281,0.806283,6126,955
+informative,A,official,fusion,1024,1.0,0.913529,0.922388,0.931201,0.9309,9601,1534
+informative,A,official,image,512,0.1,0.886283,0.88406,0.896655,0.895698,9601,1534
+informative,A,official,text,512,1.0,0.847819,0.863945,0.879333,0.878748,9601,1534
