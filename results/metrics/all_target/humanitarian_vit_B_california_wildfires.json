@@ -1,0 +1,114 @@
+{
+  "task": "humanitarian",
+  "n_samples": 511,
+  "labels": [
+    "affected_individuals",
+    "infrastructure_and_utility_damage",
+    "rescue_volunteering_or_donation_effort",
+    "other_relevant_information",
+    "not_humanitarian"
+  ],
+  "f1_macro": 0.5077134488846091,
+  "f1_weighted": 0.6763503974456777,
+  "accuracy": 0.6868884540117417,
+  "per_class": {
+    "affected_individuals": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 8
+    },
+    "infrastructure_and_utility_damage": {
+      "precision": 0.7049180327868853,
+      "recall": 0.5180722891566265,
+      "f1-score": 0.5972222222222222,
+      "support": 83
+    },
+    "rescue_volunteering_or_donation_effort": {
+      "precision": 0.6097560975609756,
+      "recall": 0.4807692307692308,
+      "f1-score": 0.5376344086021505,
+      "support": 52
+    },
+    "other_relevant_information": {
+      "precision": 0.6132075471698113,
+      "recall": 0.6842105263157895,
+      "f1-score": 0.6467661691542289,
+      "support": 95
+    },
+    "not_humanitarian": {
+      "precision": 0.7194719471947195,
+      "recall": 0.7985347985347986,
+      "f1-score": 0.7569444444444444,
+      "support": 273
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      2,
+      0,
+      6
+    ],
+    [
+      0,
+      43,
+      1,
+      6,
+      33
+    ],
+    [
+      0,
+      4,
+      25,
+      2,
+      21
+    ],
+    [
+      0,
+      2,
+      3,
+      65,
+      25
+    ],
+    [
+      0,
+      12,
+      10,
+      33,
+      218
+    ]
+  ],
+  "confusion_matrix_axes": {
+    "rows": "y_true",
+    "columns": "y_pred"
+  },
+  "bootstrap": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence_level": 0.95,
+    "method": "paired ordinary percentile bootstrap over tweet-image rows",
+    "fixed_labels": true,
+    "zero_division": 0,
+    "intervals": {
+      "f1_macro": {
+        "lower": 0.4664920072364715,
+        "upper": 0.5455790550357517
+      },
+      "f1_weighted": {
+        "lower": 0.6326954611013565,
+        "upper": 0.7174340608342082
+      },
+      "accuracy": {
+        "lower": 0.6438356164383562,
+        "upper": 0.7260763209393346
+      }
+    }
+  },
+  "model": "vit",
+  "protocol": "B",
+  "fold": "california_wildfires",
+  "subset": "all_target",
+  "prediction_file": "results/predictions/all_target/humanitarian_vit_B_california_wildfires.csv"
+}
