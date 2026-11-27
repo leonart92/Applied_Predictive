@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "source_url": "https://web.archive.org/web/20241218122122if_/https://crisisnlp.qcri.org/data/crisismmd/CrisisMMD_v2.0.tar.gz",
+  "wayback_snapshot": "20241218122122",
+  "archive_bytes": 1902053684,
+  "archive_sha256": "351b9be6123a5d5074407d792bfdddc1f470d4909f65ddd429b584d24607d43f",
+  "archive_origin": "downloaded",
+  "pillow_version": "13.0.0",
+  "checks": [
+    "snapshot_size_before_extraction",
+    "member_path_and_type",
+    "all_split_images_present",
+    "image_verify_and_full_decode"
+  ],
+  "referenced_images": 12708,
+  "validated_images": 12708,
+  "failures": []
+}
